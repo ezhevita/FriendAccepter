@@ -19,8 +19,10 @@ jobs:
         dotnet-version: 5.0.x
     - name: Restore dependencies
       run: dotnet restore
-    - name: Build
-      run: dotnet publish -c Release --no-restore -o out
+    - name: Build with .NET Core
+      run: dotnet publish -c Release -f net5.0 -o out/generic
+    - name: Build with .NET Framework
+      run: dotnet publish -c Release -f net48 -o out/generic-netf
     - name: Upload generic artifacts
       uses: actions/upload-artifact@v1
       with: 
