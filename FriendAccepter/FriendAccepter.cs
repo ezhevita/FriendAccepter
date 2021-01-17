@@ -6,7 +6,7 @@ using ArchiSteamFarm;
 using ArchiSteamFarm.Plugins;
 using JetBrains.Annotations;
 
-namespace Vital7.FriendAccepter {
+namespace FriendAccepter {
 	[Export(typeof(IPlugin))]
 	[UsedImplicitly]
 	public class FriendAccepter : IBotFriendRequest {
