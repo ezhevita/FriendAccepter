@@ -11,7 +11,7 @@ namespace FriendAccepter {
 	[UsedImplicitly]
 	public class FriendAccepter : IBotFriendRequest {
 		public void OnLoaded() {
-			ASF.ArchiLogger.LogGenericInfo(Name + " is initialized successfully!");
+			ASF.ArchiLogger.LogGenericInfo(Name + " by Vital7 | Support & source code: https://github.com/Vital7/FriendAccepter");
 		}
 
 		public string Name => nameof(FriendAccepter);
