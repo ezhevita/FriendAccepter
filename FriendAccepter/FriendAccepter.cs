@@ -2,8 +2,9 @@
 using System.Composition;
 using System.Reflection;
 using System.Threading.Tasks;
-using ArchiSteamFarm;
-using ArchiSteamFarm.Plugins;
+using ArchiSteamFarm.Core;
+using ArchiSteamFarm.Plugins.Interfaces;
+using ArchiSteamFarm.Steam;
 using JetBrains.Annotations;
 
 namespace FriendAccepter {
