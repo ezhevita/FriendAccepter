@@ -1,10 +1,6 @@
 name: .NET
 
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+on: [ push, pull_request ]
 
 env:
   DOTNET_SDK_VERSION: 5.0.x
@@ -30,11 +26,19 @@ jobs:
     - name: Build with .NET Framework
       run: dotnet publish -c Release -f net48 -o out/generic-netf
 
+    - name: Archive generic-netf release
+      uses: thedoctor0/zip-release@master
+      with:
+        directory: out/generic
+        type: 'zip'
+        filename: 'out/generic.zip'
+        exclusions: '*.json'
+
     - name: Upload generic-netf artifacts
       uses: actions/upload-artifact@v2
       with: 
         name: ${{ github.event.repository.name }}-generic-netf
-        path: out/generic-netf
+        path: out/generic-netf.zip
 
   build-generic:
     runs-on: windows-latest
@@ -56,11 +60,19 @@ jobs:
       - name: Build with .NET Core
         run: dotnet publish -c Release -f net5.0 -o out/generic
 
+      - name: Archive generic release
+        uses: thedoctor0/zip-release@master
+        with:
+          directory: out/generic
+          type: 'zip'
+          filename: 'out/generic.zip'
+          exclusions: '*.json'
+
       - name: Upload generic artifacts
         uses: actions/upload-artifact@v2
         with:
           name: ${{ github.event.repository.name }}-generic
-          path: out/generic
+          path: out/generic.zip
 
   release:
     if: ${{ github.event_name == 'push' && startsWith(github.ref, 'refs/tags/') }}
@@ -88,7 +100,6 @@ jobs:
         with:
           tag_name: ${{ github.ref }}
           release_name: ${{ github.event.repository.name }} V${{ github.ref }}
-          prerelease: true
 
       - name: Upload generic artifacts to GitHub release
         uses: actions/upload-release-asset@v1.0.2
