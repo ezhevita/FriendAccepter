@@ -5,6 +5,7 @@
     ":automergeBranch",
     ":automergeDigest",
     ":automergeMinor",
+    ":disableDependencyDashboard",
     ":label(Automatic)",
     "schedule:weekly"
   ],
