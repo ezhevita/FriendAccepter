@@ -14,7 +14,7 @@ namespace FriendAccepter {
 	public class FriendAccepterPlugin : IBotFriendRequest {
 		public Task OnLoaded()
 		{
-			ASF.ArchiLogger.LogGenericInfo($"{Name} by Vital7 | Support & source code: https://github.com/Vital7/{Name}");
+			ASF.ArchiLogger.LogGenericInfo($"{Name} by ezhevita | Support & source code: https://github.com/ezhevita/{Name}");
 
 			return Task.CompletedTask;
 		}
