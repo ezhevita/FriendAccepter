@@ -1,5 +1,4 @@
 <Project>
-
 	<PropertyGroup>
 		<ApplicationIcon/>
 		<Authors>ezhevita</Authors>
@@ -13,5 +12,4 @@
 		<RepositoryUrl>$(PackageProjectUrl).git</RepositoryUrl>
 		<SignAssembly>false</SignAssembly>
 	</PropertyGroup>
-
 </Project>
