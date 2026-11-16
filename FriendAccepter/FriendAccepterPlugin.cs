@@ -14,7 +14,7 @@ namespace FriendAccepter;
 [Export(typeof(IPlugin))]
 [UsedImplicitly]
 internal sealed class FriendAccepterPlugin : IBotFriendRequest, IGitHubPluginUpdates {
-	public Task OnLoaded()
+	public Task OnLoaded(CancellationToken cancellationToken = default)
 	{
 		ASF.ArchiLogger.LogGenericInfo($"{Name} by ezhevita | Support & source code: https://github.com/{RepositoryName}");
 
