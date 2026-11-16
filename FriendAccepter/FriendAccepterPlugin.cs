@@ -8,21 +8,21 @@ using ArchiSteamFarm.Plugins.Interfaces;
 using ArchiSteamFarm.Steam;
 using JetBrains.Annotations;
 
-namespace FriendAccepter {
-	[Export(typeof(IPlugin))]
-	[UsedImplicitly]
-	public class FriendAccepterPlugin : IBotFriendRequest {
-		public Task OnLoaded()
-		{
-			ASF.ArchiLogger.LogGenericInfo($"{Name} by ezhevita | Support & source code: https://github.com/ezhevita/{Name}");
+namespace FriendAccepter;
 
-			return Task.CompletedTask;
-		}
+[Export(typeof(IPlugin))]
+[UsedImplicitly]
+internal sealed class FriendAccepterPlugin : IBotFriendRequest, IGitHubPluginUpdates {
+	public Task OnLoaded()
+	{
+		ASF.ArchiLogger.LogGenericInfo($"{Name} by ezhevita | Support & source code: https://github.com/{RepositoryName}");
 
-		public string Name => nameof(FriendAccepter);
-		public Version Version => Assembly.GetExecutingAssembly().GetName().Version ?? throw new InvalidOperationException(nameof(Version));
-
-		[CLSCompliant(false)]
-		public Task<bool> OnBotFriendRequest(Bot bot, ulong steamID) => Task.FromResult(true);
+		return Task.CompletedTask;
 	}
+
+	public string Name => nameof(FriendAccepter);
+	public string RepositoryName => "ezhevita/FriendAccepter";
+	public Version Version => Assembly.GetExecutingAssembly().GetName().Version ?? throw new InvalidOperationException(nameof(Version));
+
+	public Task<bool> OnBotFriendRequest(Bot bot, ulong steamID, CancellationToken cancellationToken = default) => Task.FromResult(true);
 }
